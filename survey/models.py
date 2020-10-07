@@ -3,7 +3,7 @@ from django.db import models
 class Survey(models.Model):
     title = models.TextField(max_length=140)
     description = models.TextField(max_length=300, null=True, blank=True)
-    question = models.ManyToManyField('Question', related_name='surveys_question')
+    question = models.ManyToManyField('Question', related_name='surveys_question', blank=True)
     # results = models.ForeignKey('Result', on_delete=models.CASCADE, related_name='survey_result')
 
 
@@ -24,11 +24,12 @@ class Question(models.Model):
         (TYPE_QUESTION_MULTIPLE_CHOICE, "Multiple Choice")
     )
 
-    survey = models.ForeignKey(Survey, null=True, on_delete=models.CASCADE, related_name='questions')
+    question_body = models.CharField(max_length=250)
+    survey = models.ForeignKey(Survey, null=True, blank=True, on_delete=models.CASCADE, related_name='questions')
     question_type = models.CharField(max_length=250, choices=TYPE_QUESTION, default=TYPE_QUESTION_TEXT)
 
     def __str__(self):
-        return self.title
+        return self.question_body
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.CASCADE, related_name='question_choice')
