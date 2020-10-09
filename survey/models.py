@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Survey(models.Model):
     title = models.TextField(max_length=140)
@@ -8,6 +9,7 @@ class Survey(models.Model):
     private_flag = models.BooleanField(default=False)
     survey_link = models.URLField()
     results = models.ManyToManyField('Result', related_name='survey_result')
+    created = models.DateTimeField(default=timezone.now)
 
 
     def __str__(self):
