@@ -44,7 +44,7 @@ class Choice(models.Model):
 class Result(models.Model):
     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='result_question')
     # user = models.ForeignKey('User', null=True)
-    answer = models.CharField(max_length=250)
+    answer = models.ForeignKey('choice', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.answer
