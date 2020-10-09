@@ -7,8 +7,8 @@ class Survey(models.Model):
     description = models.TextField(max_length=300, null=True, blank=True)
     question = models.ManyToManyField('Question', related_name='surveys_question', blank=True)
     private_flag = models.BooleanField(default=False)
-    survey_link = models.URLField()
-    results = models.ManyToManyField('Result', related_name='survey_result')
+    survey_link = models.URLField(blank=True)
+    results = models.ManyToManyField('Result', related_name='survey_result', blank=True)
     created = models.DateTimeField(default=timezone.now)
 
 
@@ -37,11 +37,11 @@ class Question(models.Model):
         return self.question_body
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, null=True, on_delete=models.CASCADE, related_name='question_choice')
+    question = models.ForeignKey(Question, blank=True, on_delete=models.CASCADE, related_name='question_choice')
     choice_body = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.choice_txt
+        return self.choice_body
 
 
 class Result(models.Model):
