@@ -4,7 +4,9 @@ class Survey(models.Model):
     title = models.TextField(max_length=140)
     description = models.TextField(max_length=300, null=True, blank=True)
     question = models.ManyToManyField('Question', related_name='surveys_question', blank=True)
-    # results = models.ForeignKey('Result', on_delete=models.CASCADE, related_name='survey_result')
+    private_flag = models.BooleanField(default=False)
+    survey_link = models.URLField()
+    results = models.ManyToManyField('Result', related_name='survey_result')
 
 
     def __str__(self):
@@ -33,7 +35,7 @@ class Question(models.Model):
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.CASCADE, related_name='question_choice')
-    choice_txt = models.CharField(max_length=200)
+    choice_body = models.CharField(max_length=200)
 
     def __str__(self):
         return self.choice_txt
