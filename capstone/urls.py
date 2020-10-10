@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from survey import views as survey_views
+from homepage import views as homepage_views
 
 router = routers.DefaultRouter()
 router.register(r'survey', survey_views.SurveyViewSet)
 router.register(r'question', survey_views.QuestionViewSet)
 router.register(r'choice', survey_views.ChoiceViewSet)
 router.register(r'result', survey_views.ResultViewSet)
+router.register(r'user', homepage_views.CustomUserViewSet)
+
 
 
 urlpatterns = [

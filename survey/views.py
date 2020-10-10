@@ -11,7 +11,7 @@ class SurveyViewSet(viewsets.ModelViewSet):
     queryset = Survey.objects.all().order_by('-created')
     serializer_class = SurveySerializer
 
-    #ToDo add the rest of survey viewset
+    
 
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
