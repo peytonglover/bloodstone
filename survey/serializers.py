@@ -7,7 +7,7 @@ class SurveySerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'title',
-            # 'author',
+            'author',
             'description',
             'question',
             'private_flag',
@@ -41,7 +41,7 @@ class ResultSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'question',
-            # 'user',
+            'user',
             'answer',
         ]
 

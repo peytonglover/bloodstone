@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils import timezone
+from homepage.models import CustomUser
 
 class Survey(models.Model):
     title = models.TextField(max_length=140)
-    # author = models.ForeignKey('user', on_delete=models.CASCADE, related_name='creator')
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='creator')
     description = models.TextField(max_length=300, null=True, blank=True)
     question = models.ManyToManyField('Question', related_name='surveys_question', blank=True)
     private_flag = models.BooleanField(default=False)
@@ -46,7 +47,7 @@ class Choice(models.Model):
 
 class Result(models.Model):
     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='result_question')
-    # user = models.ForeignKey('User', null=True)
+    user = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
     answer = models.ForeignKey('choice', on_delete=models.CASCADE)
 
     def __str__(self):

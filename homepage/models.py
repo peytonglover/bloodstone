@@ -12,3 +12,4 @@ class CustomUser(AbstractUser):
         (SU, 'Survey User')
     ]
     user_type = models.CharField(max_length=80, choices=user_type_options, default=BU)
+    
