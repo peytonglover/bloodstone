@@ -8,6 +8,7 @@ class Survey(models.Model):
     description = models.TextField(max_length=300, null=True, blank=True)
     question = models.ManyToManyField('Question', related_name='surveys_question', blank=True)
     private_flag = models.BooleanField(default=False)
+    poll_flag = models.BooleanField(default=True)
     survey_link = models.URLField(blank=True)
     results = models.ManyToManyField('Result', related_name='survey_result', blank=True)
     created = models.DateTimeField(default=timezone.now)
