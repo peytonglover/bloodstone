@@ -9,10 +9,7 @@ from django.utils import timezone
 
 
 class SurveyViewSet(viewsets.ModelViewSet):
-    '''
-    We need one where I can get all the surveys and polls one user created, 
-    also need to be able to query just public surveys and polls.
-    '''
+
     queryset = Survey.objects.all().order_by('-created')
     serializer_class = SurveySerializer
 
