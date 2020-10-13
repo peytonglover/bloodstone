@@ -6,3 +6,4 @@ from homepage.models import CustomUser
 class CustomUserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+

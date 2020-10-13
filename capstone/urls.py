@@ -25,6 +25,7 @@ router.register(r'question', survey_views.QuestionViewSet)
 router.register(r'choice', survey_views.ChoiceViewSet)
 router.register(r'result', survey_views.ResultViewSet)
 router.register(r'user', homepage_views.CustomUserViewSet)
+router.register(r'survey-list/(?P<author_id>\d+)', survey_views.UserListViewSet, basename='list')
 
 
 

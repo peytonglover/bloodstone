@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from survey.models import *
 from survey.serializers import *
+from homepage.models import CustomUser
 from django.utils import timezone
 
 
@@ -50,3 +51,14 @@ class ChoiceViewSet(viewsets.ModelViewSet):
 class ResultViewSet(viewsets.ModelViewSet):
     queryset = Result.objects.all()
     serializer_class = ResultSerializer
+
+
+class UserListViewSet(viewsets.ModelViewSet):
+    serializer_class = SurveySerializer
+
+    def get_queryset(self):
+        author_id = self.kwargs['author_id']
+        queryset = Survey.objects.all()
+        if author_id is not None:
+            queryset = queryset.filter(author__id=author_id)
+        return queryset
