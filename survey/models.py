@@ -50,7 +50,8 @@ class Result(models.Model):
     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='result_question')
     user = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
     answer = models.ForeignKey('choice', on_delete=models.CASCADE)
-
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.answer
 
