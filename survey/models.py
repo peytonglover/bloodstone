@@ -32,7 +32,7 @@ class Question(models.Model):
     )
 
     question_body = models.CharField(max_length=250)
-    survey = models.ManyToManyField(Survey, blank=True, related_name='questions')
+    # survey = models.ManyToManyField(Survey, blank=True, related_name='questions')
     question_type = models.CharField(max_length=250, choices=TYPE_QUESTION, default=TYPE_QUESTION_TEXT)
 
     def __str__(self):
