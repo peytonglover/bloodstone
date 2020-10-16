@@ -11,6 +11,7 @@ class SurveySerializer(serializers.HyperlinkedModelSerializer):
             'description',
             'question',
             'private_flag',
+            'poll_flag',
             'survey_link',
             'results',
         ]
@@ -22,7 +23,6 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'question_body',
-            'survey',
             'question_type',
         ]
 
@@ -43,5 +43,6 @@ class ResultSerializer(serializers.HyperlinkedModelSerializer):
             'question',
             'user',
             'answer',
+            'survey',
         ]
 
