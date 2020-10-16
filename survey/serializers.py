@@ -5,6 +5,7 @@ class SurveySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Survey
         fields = [
+            'url',
             'id',
             'title',
             'author',
@@ -21,6 +22,7 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Question
         fields = [
+            'url',
             'id',
             'question_body',
             'question_type',
