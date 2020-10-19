@@ -26,9 +26,15 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'question_body',
             'question_type',
+            'option1',
+            'option2',
+            'option3',
+            'option4',
+            'option5',
         ]
 
-class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
+
+class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
         fields = [
@@ -37,7 +43,8 @@ class ChoiceSerializer(serializers.HyperlinkedModelSerializer):
             'choice_body',
         ]
 
-class ResultSerializer(serializers.HyperlinkedModelSerializer):
+
+class ResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = Result
         fields = [
@@ -45,6 +52,5 @@ class ResultSerializer(serializers.HyperlinkedModelSerializer):
             'question',
             'surveyID',
             'answer',
-            'survey',
         ]
 

@@ -34,6 +34,11 @@ class Question(models.Model):
     question_body = models.CharField(max_length=250)
     # survey = models.ManyToManyField(Survey, blank=True, related_name='questions')
     question_type = models.CharField(max_length=250, choices=TYPE_QUESTION, default=TYPE_QUESTION_TEXT)
+    option1 = models.CharField(max_length=50, blank=True, null=True)
+    option2 = models.CharField(max_length=50, blank=True, null=True)
+    option3 = models.CharField(max_length=50, blank=True, null=True)
+    option4 = models.CharField(max_length=50, blank=True, null=True)
+    option5 = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.question_body
@@ -49,7 +54,7 @@ class Choice(models.Model):
 class Result(models.Model):
     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='result_question')
     surveyID = models.ForeignKey(Survey, null=True, on_delete=models.CASCADE)
-    answer = models.TextField(max_length=100)
+    answer = models.CharField(max_length=100)
 
     def __str__(self):
         return self.answer
