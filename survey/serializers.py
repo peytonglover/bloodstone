@@ -41,7 +41,7 @@ class ResultSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'question',
-            'user',
+            'surveyID',
             'answer',
         ]
 
