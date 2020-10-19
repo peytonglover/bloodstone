@@ -20,10 +20,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = [
-            'id',
             'username',
             'displayname',
-            'user_type',
             'email',
             'password'
         ]
@@ -31,14 +29,12 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = CustomUser.objects.create_user(
-            validated_data['id'],
             validated_data['username'],
-            validated_data['displayname'],
-            validated_data['user_type'],
             validated_data['email'],
             validated_data['password']
         )
         return user
+
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
