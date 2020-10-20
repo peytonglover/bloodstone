@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from survey.models import Survey, Question, Choice, Result
 
-class SurveySerializer(serializers.HyperlinkedModelSerializer):
+class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
         fields = [
@@ -18,7 +18,7 @@ class SurveySerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 
-class QuestionSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = [
